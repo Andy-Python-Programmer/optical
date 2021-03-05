@@ -12,7 +12,11 @@ lazy_static! {
 }
 
 fn main() {
-    let routes = routes![routes::index::get, routes::contact::get];
+    let routes = routes![
+        routes::index::get,
+        routes::contact::get,
+        routes::public::get
+    ];
 
     rocket::ignite().mount("/", routes).launch();
 }
