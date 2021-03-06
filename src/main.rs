@@ -15,7 +15,8 @@ fn main() {
     let routes = routes![
         routes::index::get,
         routes::contact::get,
-        routes::public::get
+        routes::public::get,
+        routes::dashboard::get
     ];
 
     rocket::ignite().mount("/", routes).launch();
