@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+
     <title>Optical - Dashboard</title>
 </head>
 
@@ -23,16 +27,26 @@
         #overlap {
             position: fixed;
         }
+
+        #overlap {
+            margin: 10px;
+        }
     </style>
 
     <section id="main">
         <div id="canvas"></div>
         <div id="overlap">
-            <select id="country-select"></select>
+            <div id="geocoder"></div>
+            <br>
             <button id="go">Go!</button>
         </div>
     </section>
 
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+        type="text/css">
     <script src="//unpkg.com/globe.gl"></script>
     <script src="//unpkg.com/three"></script>
     <script src="/static/javascript/dashboard.js"></script>

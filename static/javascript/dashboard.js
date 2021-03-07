@@ -5,12 +5,19 @@ function sleep(ms) {
 }
 
 async function main() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXB5dGhvbmFwcGRldmVsb3BlciIsImEiOiJja2x5cXJ5ZWgxamM0MnZuNnNrZmh3MmpzIn0.kBiHFpLBNbxite7fpdoWNw';
+
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+    });
+
+    geocoder.addTo('#geocoder');
+
     let data = await (await fetch("/static/geo.json")).json();
     let target_country;
 
     const canvas = document.getElementById("canvas");
 
-    let country_selector = document.getElementById("country-select");
     let go = document.getElementById("go");
 
     let features_vector = {};
@@ -18,7 +25,6 @@ async function main() {
     for (let i = 0; i < data.features.length; i++) {
         const country = data.features[i].properties.NAME;
 
-        country_selector.innerHTML += `<option value="${country}">${country}</option>`;
         features_vector[country] = [data.features[i]]
     }
 
@@ -35,9 +41,18 @@ async function main() {
     earth.controls().autoRotateSpeed = -0.3;
 
     let cords;
+    let res;
 
-    country_selector.addEventListener("change", (event) => {
-        target_country = event.target.value;
+    geocoder.on("result", (result) => {
+        res = result.result.center;
+
+        result.result.context.forEach(element => {
+            if (element.id.startsWith("country")) {
+                target_country = element.text;
+            }
+        });
+
+        console.log(target_country);
 
         let country_data = features_vector[target_country];
         cords = country_data[0]["geometry"]["coordinates"];
@@ -67,7 +82,7 @@ async function main() {
 
         await sleep(3000);
 
-        window.location.replace(`/cost?country="${target_country}"`)
+        window.location.replace(`/cost?lat=${res[0]}&lng=${res[1]}`)
     });
 
     // Make the our earth responsive :D
