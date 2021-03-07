@@ -5,7 +5,8 @@ function sleep(ms) {
 }
 
 async function main() {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXB5dGhvbmFwcGRldmVsb3BlciIsImEiOiJja2x5cXJ5ZWgxamM0MnZuNnNrZmh3MmpzIn0.kBiHFpLBNbxite7fpdoWNw';
+    // This is the public access token. You can only access it if you are using optical :)
+    mapboxgl.accessToken = "pk.eyJ1IjoiYW5keXB5dGhvbmFwcGRldmVsb3BlciIsImEiOiJja2x5cXZoejUwNHJoMm9xc2F1Z2cweXUzIn0.DQkJOVfq_JZz9u27SLbqBw";
 
     var geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
