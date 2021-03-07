@@ -1,11 +1,18 @@
 const GLOBE_IMAGE_TEXTURE = "/static/images/globe.png";
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function main() {
     let data = await (await fetch("/static/geo.json")).json();
+    let target_country;
 
     const canvas = document.getElementById("canvas");
 
     let country_selector = document.getElementById("country-select");
+    let go = document.getElementById("go");
+
     let features_vector = {};
 
     for (let i = 0; i < data.features.length; i++) {
@@ -27,11 +34,13 @@ async function main() {
     earth.controls().autoRotate = true;
     earth.controls().autoRotateSpeed = -0.3;
 
+    let cords;
+
     country_selector.addEventListener("change", (event) => {
-        const target_country = event.target.value;
+        target_country = event.target.value;
 
         let country_data = features_vector[target_country];
-        let cords = country_data[0]["geometry"]["coordinates"];
+        cords = country_data[0]["geometry"]["coordinates"];
 
         while (true) {
             cords = cords[0];
@@ -46,9 +55,20 @@ async function main() {
             .pointOfView({
                 "lng": cords[0],
                 "lat": cords[1],
-            });
+            }, 3000);
     });
 
+    go.addEventListener("click", async () => {
+        earth.pointOfView({
+            "lng": cords[0],
+            "lat": cords[1],
+            "altitude": 1
+        }, 3000);
+
+        await sleep(3000);
+
+        window.location.replace(`/cost?country="${target_country}"`)
+    });
 
     // Make the our earth responsive :D
     window.addEventListener('resize', (event) => {
