@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
 
     <title>Optical - Cost</title>
 </head>
@@ -24,11 +24,62 @@
             bottom: 0;
             width: 100%;
         }
+
+        .calculation-box {
+            height: auto;
+            width: auto;
+            position: absolute;
+            bottom: 40px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .button {
+            height: auto;
+            width: auto;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 140, 255, 0.9);
+            color: white;
+            border: none;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        p {
+            font-family: "Open Sans";
+            margin: 0;
+            font-size: 13px;
+        }
     </style>
 
-    <div id="map"></div>
+    <section id="calc">
+        <div id="map"></div>
+        <div class="calculation-box">
+            <p>Draw around your roof area so we can help determine the shape and size available to you.</p>
+            <div id="calculated-area"></div>
+        </div>
+        <button class="button hide" id="calc-next">
+            <p>Next</p>
+        </button>
+    </section>
 
-    <script src="//unpkg.com/three"></script>
+    <section id="calc-res" class="hide"></section>
+
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.1/mapbox-gl-draw.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.1/mapbox-gl-draw.css"
+        type="text/css">
+
     <script src="/static/javascript/cost.js"></script>
 </body>
 

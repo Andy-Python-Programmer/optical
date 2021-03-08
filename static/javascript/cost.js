@@ -1,126 +1,62 @@
+async function main_res(area) {
+
+}
+
 async function main(argv) {
     // This is the public access token. You can only access it if you are using optical :)
     mapboxgl.accessToken = "pk.eyJ1IjoiYW5keXB5dGhvbmFwcGRldmVsb3BlciIsImEiOiJja2x5cXZoejUwNHJoMm9xc2F1Z2cweXUzIn0.DQkJOVfq_JZz9u27SLbqBw";
 
     let map = (window.map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/satellite-v9',
+        container: "map",
+        style: "mapbox://styles/mapbox/satellite-v9",
         center: [argv.get("lat"), argv.get("lng")],
         zoom: 18,
     }));
 
-    // Define vertices of the triangle to be rendered in the custom style layer
-    var c1;
-    var c2;
-    var c3;
-    var c4;
+    let calc_next = document.getElementById("calc-next");
 
-    map.on("click", (e) => {
-        if (c1 == undefined) {
-            c1 = mapboxgl.MercatorCoordinate.fromLngLat({
-                lng: e.lngLat.lng,
-                lat: e.lngLat.lat
-            });
-        } else if (c2 == undefined) {
-            c2 = mapboxgl.MercatorCoordinate.fromLngLat({
-                lng: e.lngLat.lng,
-                lat: e.lngLat.lat
-            });
-        } else if (c3 == undefined) {
-            c3 = mapboxgl.MercatorCoordinate.fromLngLat({
-                lng: e.lngLat.lng,
-                lat: e.lngLat.lat
-            });
-        } else if (c4 == undefined) {
-            c4 = mapboxgl.MercatorCoordinate.fromLngLat({
-                lng: e.lngLat.lng,
-                lat: e.lngLat.lat
-            });
+    // Sections.
+    let calc = document.getElementById("calc");
+    let calc_res = document.getElementById("calc-res");
+
+    let draw = new MapboxDraw({
+        displayControlsDefault: false,
+        controls: {
+            polygon: true,
+            trash: true
         }
     });
+    map.addControl(draw);
 
-    var highlightLayer = {
-        id: "highlight",
-        type: "custom",
+    map.on("draw.create", updateArea);
+    map.on("draw.delete", updateArea);
+    map.on("draw.update", updateArea);
 
-        onAdd: function (_, gl) {
+    let area;
 
-            // Create GLSL source for vertex shader
-            var vertexSource =
-                '' +
-                'uniform mat4 u_matrix;' +
-                'attribute vec2 a_pos;' +
-                'void main() {' +
-                '    gl_Position = u_matrix * vec4(a_pos, 0.0, 1.0);' +
-                '}';
+    function updateArea() {
+        var data = draw.getAll();
+        var answer = document.getElementById("calculated-area");
 
-            // Create GLSL source for fragment shader
-            var fragmentSource =
-                '' +
-                'void main() {' +
-                '    gl_FragColor = vec4(1.0, 0.0, 0.0, 0.5);' +
-                '}';
+        if (data.features.length > 0) {
+            var area_t = turf.area(data);
+            var rounded_area = Math.round(area_t * 100) / 100;
 
-            // Create a vertex shader
-            var vertexShader = gl.createShader(gl.VERTEX_SHADER);
-            gl.shaderSource(vertexShader, vertexSource);
-            gl.compileShader(vertexShader);
-
-            // create a fragment shader
-            var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-            gl.shaderSource(fragmentShader, fragmentSource);
-            gl.compileShader(fragmentShader);
-
-            // link the two shaders into a WebGL program
-            program = gl.createProgram();
-            gl.attachShader(program, vertexShader);
-            gl.attachShader(program, fragmentShader);
-            gl.linkProgram(program);
-
-            aPos = gl.getAttribLocation(program, 'a_pos');
-        },
-
-        // Method fired on each animation frame
-        // https://docs.mapbox.com/mapbox-gl-js/api/#map.event:render
-        render: function (gl, matrix) {
-            console.log(c1, c2, c3, c4);
-
-            // Create and initialize a WebGLBuffer to store vertex and color data
-            buffer = gl.createBuffer();
-            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-            gl.bufferData(
-                gl.ARRAY_BUFFER,
-                new Float32Array([
-                    c1.x,
-                    c1.y,
-                    c2.x,
-                    c2.y,
-                    c3.x,
-                    c3.y,
-                    c4.x,
-                    c4.y
-                ]),
-                gl.STATIC_DRAW
-            );
-
-            gl.useProgram(program);
-            gl.uniformMatrix4fv(
-                gl.getUniformLocation(program, 'u_matrix'),
-                false,
-                matrix
-            );
-            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-            gl.enableVertexAttribArray(aPos);
-            gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
-            gl.enable(gl.BLEND);
-            gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+            aera = rounded_area;
+            answer.innerHTML = `<p>Your roof area is around: <strong>${rounded_area}</strong> square meters.`;
+            calc_next.style.display = "initial";
+        } else {
+            area = undefined;
+            answer.innerHTML = "";
+            calc_next.style.display = "none";
         }
-    };
+    }
 
-    // Add the custom style layer to the map.
-    map.on("load", () => {
-        map.addLayer(highlightLayer);
+    calc_next.addEventListener("click", (_) => {
+        calc.style.display = "none";
+        calc_res.style.display = "initial";
+
+        main_res(area);
     });
 }
 
