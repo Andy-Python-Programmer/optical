@@ -14,6 +14,5 @@ Welcome to optical!
 
 ## Team - Borrow Checker
 - @Andy-Python-Programmer 🦀
-- @konsti219 😄
 
 *❝ Empowering everyone to rewrite everything in rust❞*
