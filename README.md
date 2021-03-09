@@ -1,3 +1,5 @@
+<img src="misc/banner.png" width="500px">
+
 # Optical
 [![Generic badge](https://img.shields.io/badge/CodeJam-Timathon-orange.svg)](https://twtcodejam.net/) 
 
@@ -14,5 +16,6 @@ Welcome to optical!
 
 ## Team - Borrow Checker
 - @Andy-Python-Programmer 🦀
+- @bloatoo 🦀
 
 *❝ Empowering everyone to rewrite everything in rust❞*
