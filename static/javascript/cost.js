@@ -1,5 +1,10 @@
-async function main_res(area) {
+(
+    // Init.
+    async () => { }
+)();
 
+async function main_res(area) {
+    console.log(`Roof Area: ${area}`);
 }
 
 async function main(argv) {
@@ -52,7 +57,7 @@ async function main(argv) {
         }
     }
 
-    calc_next.addEventListener("click", (_) => {
+    calc_next.addEventListener("click", () => {
         calc.style.display = "none";
         calc_res.style.display = "initial";
 
