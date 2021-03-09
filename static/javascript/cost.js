@@ -4,7 +4,12 @@
 )();
 
 async function main_res(area) {
+    let panels_c = document.getElementById("panels-count");
+
     console.log(`Roof Area: ${area}`);
+    console.log(`You can fit around ${Math.round(area / 1.7)} panels.`)
+
+    panels_c.innerHTML = `${Math.round(area / 1.7)} solar panels.`;
 }
 
 async function main(argv) {
@@ -19,6 +24,8 @@ async function main(argv) {
     }));
 
     let calc_next = document.getElementById("calc-next");
+    let answer = document.getElementById("calculated-area");
+
 
     // Sections.
     let calc = document.getElementById("calc");
@@ -31,23 +38,23 @@ async function main(argv) {
             trash: true
         }
     });
+
     map.addControl(draw);
 
     map.on("draw.create", updateArea);
     map.on("draw.delete", updateArea);
     map.on("draw.update", updateArea);
 
-    let area;
+    var area;
 
     function updateArea() {
         var data = draw.getAll();
-        var answer = document.getElementById("calculated-area");
 
         if (data.features.length > 0) {
-            var area_t = turf.area(data);
-            var rounded_area = Math.round(area_t * 100) / 100;
+            const area_t = turf.area(data);
+            const rounded_area = Math.round(area_t * 100) / 100;
 
-            aera = rounded_area;
+            area = rounded_area;
             answer.innerHTML = `<p>Your roof area is around: <strong>${rounded_area}</strong> square meters.`;
             calc_next.style.display = "initial";
         } else {
