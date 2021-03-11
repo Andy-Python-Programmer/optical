@@ -1,0 +1,9 @@
+.intro {
+    background-image: url("/static/images/solar_panel_on_house.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.mapboxgl-ctrl-geocoder {
+    width: 300px !important;
+}

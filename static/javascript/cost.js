@@ -5,12 +5,6 @@ const DEFAULT_MAP_STYLE = "mapbox://styles/mapbox/satellite-v9";
 /// Mapbox access token.
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoiYW5keXB5dGhvbmFwcGRldmVsb3BlciIsImEiOiJja2x5cXZoejUwNHJoMm9xc2F1Z2cweXUzIn0.DQkJOVfq_JZz9u27SLbqBw";
 
-(
-    async () => {
-        mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
-    }
-)();
-
 async function main_res(area) {
     let panels_c = document.getElementById("panels-count");
 
@@ -23,6 +17,8 @@ async function main_res(area) {
 }
 
 async function main(argv) {
+    mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+
     let center = [argv.get("lat"), argv.get("lng")];
 
     let map_config = {
@@ -58,7 +54,7 @@ async function main(argv) {
     let calc = document.getElementById("calc");
     let calc_res = document.getElementById("calc-res");
 
-    let updateArea = () => {
+    function updateArea() {
         var data = draw.getAll();
 
         if (data.features.length > 0) {
