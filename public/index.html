@@ -15,97 +15,209 @@
         type="text/css">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="/static/stylesheets/index.css">
 
     <title>Optical</title>
 </head>
 
 <body>
-    <section class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container">
-            <a class="navbar-brand">
-                <h3>Optical</h3>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse">
-                <ul class="nav">
-                    <li class="nav-item"><a class="nav-link active" href="/contact/">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/dashboard/">Dashboard</a></li>
-                </ul>
+    <!-- Header and the getting started section: -->
+    <div class="intro" id="intro-section">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand">
+                    <h5 style="color: white;">Optical</h5>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link active" href="/contact/">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/dashboard/">Dashboard</a></li>
+                    </ul>
+                </div>
+                <a href="https://github.com/Andy-Python-Programmer/optical"
+                    class="navbar-btn btn btn-sm lift ml-auto button-yellow">
+                    <i class="bi bi-github"></i>
+                    Github
+                </a>
             </div>
-            <a href="https://github.com/Andy-Python-Programmer/optical" class="navbar-btn btn btn-sm lift ml-auto"
-                style="background: rgb(255, 94, 0); color: white;">
-                <i class="bi bi-github"></i>
-                Github
-            </a>
-        </div>
-    </section>
-    <section class="p-3 intro">
-        <center>
-            <div class="col-12 col-md-7 col-lg-6 order-md-1">
+        </nav>
+        <section class="p-3" style="text-align: center;">
+            <div class="col-12 col-md-7 col-lg-6 order-md-1" style="display: inline-block;">
                 <h1 class="display-3 text-center text-md-left">
-                    Welcome to <span style="color: rgb(255, 94, 0)">Optical</span><br>
+                    Welcome to Optical<br>
                 </h1>
-                <p class="lead text-center text-md-left text-muted mb-6 mb-lg-8">
+                <p class="lead text-center text-md-left mb-6 mb-lg-8">
                     Optical is the preferred solar panel calculator.
                 </p>
                 <div style="display: inline;">
-                    <div id="geocoder" style="display: inline-block;"></div>
+                    <div id="geocoder" style="display: inline-block; text-align: left;"></div>
                     <div style=" display: inline-block;">
-                        <button class="btn btn-sm lift ml-auto" id="get-started"
-                            style="background-color: rgb(255, 94, 0); color: white;">Get
+                        <button class="btn btn-sm lift ml-auto button-yellow" id="get-started">Get
                             Started</button>
                     </div>
                 </div>
             </div>
-        </center>
-    </section>
-    <section class="py-8 py-md-11 p-3">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-4">
-                    <h1><i class="bi bi-hand-index"></i></h1>
-                    <h3>
-                        Easy to use.
-                    </h3>
-                    <p class="text-muted mb-6 mb-md-0">
-                        Optical was designed with simplicity in mind
-                    </p>
-                </div>
-                <div class="col-12 col-md-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="50">
-                    <h1><i class="bi bi-file-earmark-bar-graph"></i></h1>
-                    <h3>
-                        Designed to be modern
-                    </h3>
-                    <p class="text-muted mb-6 mb-md-0">
-                        Optical was designed to complement for modern ages.
-                    </p>
+        </section>
+    </div>
+
+    <!-- How optical works section. -->
+    <section class="p-4">
+        <h1 class="header-yellow"><span>How optical works</span></h1>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col"><img src="/static/images/how_it_works.home.png" width="50%"></div>
+                <div class="col">
+                    <h1 class="display-2">1</h1>
+                    <h2 class="display-4">Search for your home</h2>
+                    <p>Using the art of MapBox we use it to analyse your roof area and local weather patterns to create
+                        more accuracy.</p>
                 </div>
             </div>
             <br>
-        </div>
-    </section>
-    <footer class="py-8 py-md-11 p-3 bg-light">
-        <div class="container">
             <div class="row">
-                <div class="col-12 col-md-4 col-lg-3">
-                    <h3 class="footer-brand mb-2">Optical</h3>
-                    <p class="text-gray-700 mb-2">Optical is awesome!</p>
-                    <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
-                        <li class="list-inline-item list-social-item mr-3">
-                            <a href="#" class="text-decoration-none"><i class="bi bi-github"></i></a>
-                        </li>
-                        <li class="list-inline-item list-social-item mr-3">
-                            <a href="#" class="text-decoration-none"><i class="bi bi-discord"></i></a>
-                        </li>
-                    </ul>
+                <div class="col"><img src="/static/images/how_it_works.settings.png" width="25%" class="ml-2"></div>
+                <div class="col">
+                    <h1 class="display-2">2</h1>
+                    <h2 class="display-4">Personalize your analysis</h2>
+                    <p>Personalize your analysis by adjusting your average electrical bill to fine tune results.</p>
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="p-4">
+        <h1 class="header-yellow"><span>How to maximise savings</span></h1>
+        <div class="row" style="margin-top: 1em;">
+            <div class="col-sm">
+                <div class="container">
+                    <p class="lead">The best way to make savings from solar power is to use as much electricity during
+                        the
+                        day
+                        when
+                        your panels
+                        are generating energy.</p>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="container">
+                    <img src="/static/images/cute_sun.png" height="300px" style="float: right;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact us section: -->
+    <section class="p-4" style="background-color: #f9fafb;">
+        <h1 class="header-yellow"><span>Connect with us</span></h1>
+        <div class="jumbotron shadow-sm p-3 mb-5 bg-white rounded" style="margin-top: 1em;">
+            <div class="row">
+                <div class="col-sm">
+                    <div style="text-align: center; ">
+                        <i class="bi bi-globe"
+                            style="display: inline-block; font-size: 2em; margin-right: 10px; vertical-align: top;"></i>
+                        <div style="display: inline-block;">
+                            <h3>HEAD OFFICE</h3>
+                            <p class="text-muted">Some where on the earth.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div style="text-align: center;">
+                        <i class="bi bi-phone"
+                            style="display: inline-block; font-size: 2em; margin-right: 10px; vertical-align: top;"></i>
+                        <div style="display: inline-block;">
+                            <h3>CALL US</h3>
+                            <p class="text-muted">Support: 0123456789<br>Office: 9876543210</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div style="text-align: center;">
+                        <i class="bi bi-laptop col"
+                            style="display: inline-block; font-size: 2em; margin-right: 10px; vertical-align: top;"></i>
+                        <div style="display: inline-block;">
+                            <h3>EMAIL US</h3>
+                            <a class="text-muted">example@example.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drop us a message section:  -->
+    <section class="p-4">
+        <h1 class="header-yellow"><span>Drop Us a Message</span></h1>
+        <form>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number"
+                            value="">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="btnSubmit" class="btnContact btn btn-sm lift ml-auto button-yellow"
+                            value="Send Message">
+                    </div>
+                </div>
+                <div class="col-md-6" style="margin-top: 1rem;">
+                    <div class="form-group">
+                        <textarea name="txtMsg" class="form-control" placeholder="Your Message *"
+                            style="width: 100%; height: 150px;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- So what are you waiting for section: -->
+    <section style="background-color: rgb(46,52,56); text-align: center;" class="p-3">
+        <div style="display: inline-block;">
+            <h1 style="color: white;">So what are you wating for?</h1>
+            <br>
+            <button class="btn btn-sm lift ml-auto button-yellow" id="start-saving">Start Saving!</button>
+        </div>
+    </section>
+
+    <!-- The footer: -->
+    <footer class="footer-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="https://twtcodejam.net/timathon/">Timathon</a></li>
+                        <li><a href="https://twtcodejam.net/timathon/team/692/">Team</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>Optical</h3>
+                    <blockquote>When energy is comming from the sun then why are we digging the Earth!</blockquote>
+                </div>
+                <div class="col item social">
+                    <a href="#"><i class="fa fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/Andy-Python-Programmer/optical"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <p class="copyright">© Anhad Singh 2021</p>
+        </div>
     </footer>
+
+    <!-- The scroll to the top button: -->
+    <button id="top-button"><i class="fa fa-angle-up"></i></button>
 
     <script
         src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
