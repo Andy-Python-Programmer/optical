@@ -83,7 +83,7 @@ async function main() {
 
         await sleep(3000);
 
-        window.location.replace(`/cost?lat=${res[0]}&lng=${res[1]}`)
+        window.location = `/main?lat=${res[0]}&lng=${res[1]}`;
     });
 
     // Make the our earth responsive :D

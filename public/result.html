@@ -9,13 +9,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="/static/stylesheets/result.css">
+    <link rel="stylesheet" href="/static/stylesheets/common.css">
 
     <title>Optical - Results</title>
 </head>
 
 <body>
-    <section class="intro">
+    <section class="intro" id="intro-section">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <a class="navbar-brand">
@@ -38,12 +41,36 @@
 
         <section class="p-4" style="text-align: center;">
             <h1 id="calc-total"></h1>
+            <div style="display: inline-block;">
+                <h3 class="header-yellow-sm" id="power_w">Power: </h3>
+            </div>
+            <div>
+                <button class="btn btn-sm lift ml-auto button-yellow" style="display: inline-block;" id="get-started">
+                    Customize
+                </button>
+            </div>
         </section>
     </section>
 
     <section class="p-4">
-        <h1 class="header-yellow"><span>Savings</span></h1>
+        <h1 class="header-yellow"><span>Power</span></h1>
+
+        <p class="text-muted">Select solar panel output watts:</p>
+        <select class="form-select" id="power_w_selector">
+            <option value="320w" selected>320W</option>
+            <option value="325w">325W</option>
+            <option value="330w">330W</option>
+            <option value="335w">335W</option>
+            <option value="340w">340W</option>
+            <option value="345w">345W</option>
+            <option value="350w">350W</option>
+            <option value="355w">355W</option>
+            <option value="360w">360W</option>
+            <option value="365w">365W</option>
+        </select>
     </section>
+
+    <button id="top-button"><i class="fa fa-angle-up"></i></button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
