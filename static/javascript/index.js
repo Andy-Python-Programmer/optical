@@ -69,11 +69,10 @@ function main() {
     geocoder.addTo('#geocoder');
     geocoder.on("result", (result) => {
         center = result.result.center;
-
     });
 
     get_started.addEventListener("click", () => {
-        if (center != undefined) window.location = `/cost?lat=${center[0]}&lng=${center[1]}`
+        if (center != undefined) window.location = `/main?lat=${center[0]}&lng=${center[1]}`
     });
 }
 

@@ -17,7 +17,8 @@ fn main() {
         routes::contact::get,
         routes::public::get,
         routes::dashboard::get,
-        routes::cost::get
+        routes::main::get,
+        routes::result::get,
     ];
 
     rocket::ignite().mount("/", routes).launch();

@@ -5,17 +5,6 @@ const DEFAULT_MAP_STYLE = "mapbox://styles/mapbox/satellite-v9";
 /// Mapbox access token.
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoiYW5keXB5dGhvbmFwcGRldmVsb3BlciIsImEiOiJja2x5cXZoejUwNHJoMm9xc2F1Z2cweXUzIn0.DQkJOVfq_JZz9u27SLbqBw";
 
-async function main_res(area) {
-    let panels_c = document.getElementById("panels-count");
-
-    let panel_count = Math.round(area / 1.7);
-
-    console.log(`Roof Area: ${area}`);
-    console.log(`You can fit around ${panel_count} panels.`)
-
-    panels_c.innerHTML = `${panel_count} solar panels.`;
-}
-
 async function main(argv) {
     mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
 
@@ -51,9 +40,6 @@ async function main(argv) {
     let calc_next = document.getElementById("calc-next");
     let answer = document.getElementById("calculated-area");
 
-    let calc = document.getElementById("calc");
-    let calc_res = document.getElementById("calc-res");
-
     function updateArea() {
         var data = draw.getAll();
 
@@ -74,10 +60,7 @@ async function main(argv) {
     }
 
     calc_next.addEventListener("click", () => {
-        calc.style.display = "none";
-        calc_res.style.display = "initial";
-
-        main_res(area);
+        if (area != undefined) window.location = `/result?area=${area}`;
     });
 }
 

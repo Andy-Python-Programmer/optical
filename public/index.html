@@ -30,21 +30,17 @@
                 <a class="navbar-brand">
                     <h5 style="color: white;">Optical</h5>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse"
+                    data-bs-target="#navbar-content">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav">
+
+                <div class="collapse navbar-collapse" id="navbar-content">
+                    <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link active" href="/contact/">Contact</a></li>
                         <li class="nav-item"><a class="nav-link active" href="/dashboard/">Dashboard</a></li>
                     </ul>
                 </div>
-                <a href="https://github.com/Andy-Python-Programmer/optical"
-                    class="navbar-btn btn btn-sm lift ml-auto button-yellow">
-                    <i class="bi bi-github"></i>
-                    Github
-                </a>
             </div>
         </nav>
         <section class="p-3" style="text-align: center;">
@@ -57,8 +53,9 @@
                 </p>
                 <div style="display: inline;">
                     <div id="geocoder" style="display: inline-block; text-align: left;"></div>
-                    <div style=" display: inline-block;">
-                        <button class="btn btn-sm lift ml-auto button-yellow" id="get-started">Get
+                    <div style="display: inline-block;">
+                        <button class="btn btn-sm lift ml-auto button-yellow" id="get-started"
+                            style="margin-top: 10px !important;">Get
                             Started</button>
                     </div>
                 </div>
@@ -67,8 +64,9 @@
     </div>
 
     <!-- How optical works section. -->
-    <section class="p-4">
+    <section class="p-4" style="background-color: #f9fafb;">
         <h1 class="header-yellow"><span>How optical works</span></h1>
+        <br>
         <div class="col-lg-6">
             <div class="row">
                 <div class="col-sm"><img src="/static/images/how_it_works.home.png" width="25%"

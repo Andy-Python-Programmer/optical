@@ -3,7 +3,7 @@ use rocket::*;
 
 use crate::PUBLIC_PATH;
 
-#[get("/cost")]
+#[get("/result")]
 pub fn get() -> Option<NamedFile> {
-    NamedFile::open(PUBLIC_PATH.join("cost.html")).ok()
+    NamedFile::open(PUBLIC_PATH.join("result.html")).ok()
 }

@@ -1,0 +1,28 @@
+.intro {
+    background-image: url("/static/images/result-section-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.header-yellow {
+    background-color: rgb(252, 202, 3);
+    color: #2e3438;
+    text-transform: uppercase;
+    font-size: 52px;
+    font-weight: 800;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.button-yellow {
+    background-color: rgb(252, 202, 3);
+    color: #2e3438;
+}
