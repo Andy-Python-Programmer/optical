@@ -3,10 +3,8 @@ let power_w = 320;
 
 let power_watts_res = document.getElementById("power_w");
 
-function render(calc_t, panel_c) {
-    calc_t.innerHTML = `You can fit around ${panel_c} solar panels on your roof top.`;
-
-    power_watts_res.innerHTML = `Power: ${power_w * panel_c}W`;
+function render(panel_c) {
+    power_watts_res.innerHTML = `${power_w * panel_c}W`;
 }
 
 function main(argv) {
@@ -14,6 +12,8 @@ function main(argv) {
 
     let calc_t = document.getElementById("calc-total");
     let panel_count = Math.round(area / 1.7);
+
+    calc_t.innerHTML += ` ${panel_count} solar panels on your roof top.`;
 
     console.log(`Roof Area: ${area}`);
     console.log(`You can fit around ${panel_count} panels.`)
@@ -46,10 +46,10 @@ function main(argv) {
         watts = parseInt(watts.substring(0, watts.length - 1));
 
         power_w = watts;
-        render(calc_t, panel_count);
+        render(panel_count);
     });
 
-    render(calc_t, panel_count);
+    render(panel_count);
 }
 
 main(new URLSearchParams(window.location.search));

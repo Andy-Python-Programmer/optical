@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
@@ -39,15 +40,20 @@
             </div>
         </nav>
 
-        <section class="p-4" style="text-align: center;">
-            <h1 id="calc-total"></h1>
-            <div style="display: inline-block;">
-                <h3 class="header-yellow-sm" id="power_w">Power: </h3>
-            </div>
-            <div>
-                <button class="btn btn-sm lift ml-auto button-yellow" style="display: inline-block;" id="get-started">
-                    Customize
-                </button>
+        <section class="p-4 container d-flex">
+            <div class="card justify-content-center align-self-center">
+                <div class="card-body" style="color: black">
+                    <p class="text-muted" id="calc-total"><i class="bi bi-check2-circle" style="color: #1AA260"></i>
+                        Analysis complete. Your
+                        roof
+                        can fit
+                        around</p>
+                    <hr>
+                    <div>
+                        <h3 style="display: inline-block"><i class="bi bi-plug"></i></h3>
+                        <h5 style="display: inline-block" id="power_w"></h5>
+                    </div>
+                </div>
             </div>
         </section>
     </section>
