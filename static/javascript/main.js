@@ -60,7 +60,7 @@ async function main(argv) {
     }
 
     calc_next.addEventListener("click", () => {
-        if (area != undefined) window.location = `/result?area=${area}`;
+        if (area != undefined) window.location = `/result?area=${area}&lat=${argv.get("lat")}&lng=${argv.get("lng")}`;
     });
 }
 

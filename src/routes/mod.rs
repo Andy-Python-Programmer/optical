@@ -1,3 +1,4 @@
+pub mod api;
 pub mod contact;
 pub mod dashboard;
 pub mod index;

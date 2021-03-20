@@ -1,14 +1,24 @@
 /// Power watts of one solar panel.
 let power_w = 320;
+let clear_c = 0;
 
 let power_watts_res = document.getElementById("power_w");
+let clear_count_res = document.getElementById("clear_c");
 
 function render(panel_c) {
     power_watts_res.innerHTML = `${power_w * panel_c}W`;
+    clear_count_res.innerHTML = `${clear_c * 24}`;
 }
 
-function main(argv) {
+async function main(argv) {
+    const lat = argv.get("lat");
+    const lng = argv.get("lng");
     const area = argv.get("area");
+
+    let res_api = await fetch(`/api/result/${lng}/${lat}`);
+    let res_json = await res_api.json();
+
+    clear_c = res_json["clear"];
 
     let calc_t = document.getElementById("calc-total");
     let panel_count = Math.round(area / 1.7);

@@ -5,5 +5,10 @@ authors = ["Anhad Singh <andypythonappdeveloper@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+dotenv = "0.15.0"
+json = "0.11"
 lazy_static = "1.4.0"
+requests = "0.0.30"
 rocket = "0.4.7"
+rocket_contrib = { version = "0.4.7", features = ["json"]}
+serde = "1.0.124"
