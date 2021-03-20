@@ -20,11 +20,32 @@ async function main(argv) {
 
     clear_c = res_json["clear"];
 
+    var elems = document.querySelectorAll(".destroy-all");
+
+    [].forEach.call(elems, function (el) {
+        el.classList.remove("loading");
+    });
+
     let calc_t = document.getElementById("calc-total");
     let panel_count = Math.round(area / 1.7);
 
-    calc_t.innerHTML += ` ${panel_count} solar panels on your roof top.`;
+    calc_t.innerHTML = `
+        <i class="bi bi-check2-circle" style="color: #1AA260"></i>
+        Analysis complete. Your roof can fit around ${panel_count} solar panels on your roof top.
+    `;
 
+    document.getElementById("res-card").innerHTML += `
+        <div>
+            <h3 style="display: inline-block"><i class="bi bi-plug"></i></h3>
+            <h5 style="display: inline-block" id="power_w">${power_w}</h5>
+            <p class="text-muted">Of electricity</p>
+        </div>
+        <div>
+            <h3 style="display: inline-block"><i class="bi bi-sun"></i></h3>
+            <h5 style="display: inline-block" id="clear_c">${clear_c * 24}</h5>
+            <p class="text-muted">Hours of usuable sunlight</p>
+        </div>
+    `;
     console.log(`Roof Area: ${area}`);
     console.log(`You can fit around ${panel_count} panels.`)
 

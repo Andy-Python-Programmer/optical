@@ -40,3 +40,54 @@
     background-color: rgb(252, 202, 3);
     color: #2e3438;
 }
+
+
+ .card {
+	 overflow: hidden;
+	 background: white;
+	 border-radius: 0.25rem;
+	 max-width: 380px;
+	 width: 380px;
+     height: auto;
+	 box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, .05);
+	 transition: ease box-shadow 0.3s;
+}
+ .card:hover {
+	 box-shadow: 0 15px 60px 0 rgba(0, 0, 0, 0.08), 0 5px 25px 0 rgba(0, 0, 0, .08);
+}
+
+ .loading {
+	 position: relative;
+     height: 30vh;
+	 background-color: #e2e2e2;
+}
+ .loading.card-image {
+	 border-radius: 0;
+}
+ .loading::after {
+	 display: block;
+	 content: '';
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+     height: auto;
+	 transform: translateX(-100%);
+	 background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+	 animation: loading 1.5s infinite;
+}
+ @keyframes loading {
+	 100% {
+		 transform: translateX(100%);
+	}
+}
+ .card-title.loading {
+	 height: 1.8rem;
+}
+ .card-image.image {
+	 max-width: 100%;
+	 height: auto;
+}
+ .card-description.loading {
+	 height: 80px;
+}
+ 
