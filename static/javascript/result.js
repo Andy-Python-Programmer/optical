@@ -18,6 +18,8 @@ async function main(argv) {
 
     clear_c = res_json["clear"];
 
+    let chart_sun = res_json["chart"];
+
     var elems = document.querySelectorAll(".destroy-all");
 
     [].forEach.call(elems, function (el) {
@@ -37,6 +39,11 @@ async function main(argv) {
             <h3 style="display: inline-block"><i class="bi bi-plug"></i></h3>
             <h5 style="display: inline-block" id="power_w">${power_w}</h5>
             <p class="text-muted">Of electricity</p>
+        </div>
+        <div>
+            <h3 style="display: inline-block"><i class="bi bi-house"></i></h3>
+            <h5 style="display: inline-block">${area}m²</h5>
+            <p class="text-muted">Avaliable for your solar panels</p>
         </div>
         <div>
             <h3 style="display: inline-block"><i class="bi bi-sun"></i></h3>
@@ -79,6 +86,43 @@ async function main(argv) {
 
         power_w = watts;
         render(panel_count);
+    });
+
+    let sun_chart = document.getElementById("chart-sun");
+    sun_chart.height = 50;
+
+    new Chart(sun_chart, {
+        type: "horizontalBar",
+        data: {
+            labels: ["Monady", "Tuesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            datasets: [{
+                label: "Amount of sunlight recieved on your roof top",
+                backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
+                borderColor: ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
+                data: chart_sun,
+                borderWidth: 1
+            }],
+        },
+        options: {
+            scales: {
+                xAxes: [
+                    {
+                        ticks: {
+                            callback: function (value) {
+                                return value + "%";
+                            },
+                        }
+                    },
+                ],
+            },
+        }
+
+    });
+
+    document.getElementById("download").addEventListener('click', function () {
+        var url_base64jp = document.getElementById("chart-sun").toDataURL("image/jpg");
+        var a = document.getElementById("download");
+        a.href = url_base64jp;
     });
 
     render(panel_count);

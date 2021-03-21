@@ -51,7 +51,16 @@
     </section>
 
     <section class="p-4">
-        <h1 class="header-yellow"><span>Power</span></h1>
+        <h1 class="header-yellow"><span>Amount of sunlight recieved on your roof top</span></h1>
+        <br>
+        <a id="download" download="sunlight-amount.jpg" href="" class="btn btn-primary float-right bg-flat-color-1">
+            <i class="fa fa-download"></i>
+        </a>
+        <canvas id="chart-sun"></canvas>
+    </section>
+
+    <section class="p-4">
+        <h1 class="header-yellow"><span>Customize</span></h1>
 
         <p class="text-muted">Select solar panel output watts:</p>
         <select class="form-select" id="power_w_selector">
@@ -73,6 +82,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="/static/javascript/result.js"></script>
 </body>
 
