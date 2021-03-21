@@ -94,7 +94,7 @@ async function main(argv) {
     new Chart(sun_chart, {
         type: "horizontalBar",
         data: {
-            labels: ["Monady", "Tuesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            labels: ["Monady", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
             datasets: [{
                 label: "Amount of sunlight recieved on your roof top",
                 backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
