@@ -2,12 +2,10 @@
 let power_w = 320;
 let clear_c = 0;
 
-let power_watts_res = document.getElementById("power_w");
-let clear_count_res = document.getElementById("clear_c");
+let power_watts_res;
 
 function render(panel_c) {
     power_watts_res.innerHTML = `${power_w * panel_c}W`;
-    clear_count_res.innerHTML = `${clear_c * 24}`;
 }
 
 async function main(argv) {
@@ -46,6 +44,9 @@ async function main(argv) {
             <p class="text-muted">Hours of usuable sunlight</p>
         </div>
     `;
+
+    power_watts_res = document.getElementById("power_w");
+
     console.log(`Roof Area: ${area}`);
     console.log(`You can fit around ${panel_count} panels.`)
 
