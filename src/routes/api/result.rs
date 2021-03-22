@@ -1,46 +1,51 @@
 use crate::OPEN_WEATHER_MAP_KEY;
 
-use requests::ToJson;
 use rocket::*;
 
-use json::JsonValue;
+use rocket_contrib::json;
+use rocket_contrib::json::JsonValue;
+use serde_json::Value;
 
 #[get("/api/result/<lat>/<lng>")]
-pub fn get(lat: f64, lng: f64) -> rocket_contrib::json::JsonValue {
+pub fn get(lat: f64, lng: f64) -> JsonValue {
     dbg!(lat, lng);
 
-    let weather = requests::get(format!(
-        "https://api.openweathermap.org/data/2.5/forecast?lat={}&lon={}&appid={}&cnt={}",
-        lat, lng, *OPEN_WEATHER_MAP_KEY, 16
-    ))
+    let weather = ureq::get(
+        format!(
+            "https://api.openweathermap.org/data/2.5/forecast?lat={}&lon={}&appid={}&cnt={}",
+            lat, lng, *OPEN_WEATHER_MAP_KEY, 16
+        )
+        .as_str(),
+    )
+    .call()
     .unwrap()
-    .json()
+    .into_json::<Value>()
     .unwrap();
 
-    let data = if let JsonValue::Array(array) = &weather["list"] {
+    let data = if let Value::Array(array) = &weather["list"] {
         array
     } else {
         panic!("Expected data");
     };
 
-    let mut clear_count: u8 = 0;
+    let mut clear_count = 0;
     let mut chart = vec![];
 
     for (i, data) in data.iter().enumerate() {
-        let temp = if let JsonValue::Number(num) = &data["main"]["temp_max"] {
-            (*num).into()
+        let temp = if let Value::Number(num) = &data["main"]["temp_max"] {
+            num.as_f64().unwrap()
         } else {
             0.0
         } - 273.15;
 
-        let forecast = if let JsonValue::Short(short) = &data["weather"][0]["main"] {
-            short.as_str()
+        let forecast = if let Value::String(str) = &data["weather"][0]["main"] {
+            str.as_str()
         } else {
             panic!("Expected forecast found: {:?}", &data["weather"][0]["main"]);
         };
 
-        let description = if let JsonValue::Short(short) = &data["weather"][0]["description"] {
-            short.as_str()
+        let description = if let Value::String(str) = &data["weather"][0]["description"] {
+            str.as_str()
         } else {
             ""
         };
@@ -91,5 +96,5 @@ pub fn get(lat: f64, lng: f64) -> rocket_contrib::json::JsonValue {
     println!("chart: {:#?}", chart);
     println!("Clear for {} days", clear_count);
 
-    rocket_contrib::json!({ "clear": clear_count, "chart": chart })
+    json!({ "clear": clear_count, "chart": chart })
 }
