@@ -20,6 +20,14 @@ async function main(argv) {
 
     let chart_sun = res_json["chart"];
 
+    let d1 = new Date(1000 * chart_sun[0]);
+    let d2 = new Date(1000 * chart_sun[1]);
+
+    console.log(d1, d2);
+
+    chart_sun = d2.getTime() - d1.getTime();
+    chart_sun = [Math.round(chart_sun / 60000)];
+
     var elems = document.querySelectorAll(".destroy-all");
 
     [].forEach.call(elems, function (el) {
@@ -94,7 +102,7 @@ async function main(argv) {
     new Chart(sun_chart, {
         type: "horizontalBar",
         data: {
-            labels: ["Monady", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            labels: ["Today"],
             datasets: [{
                 label: "Amount of sunlight recieved on your roof top",
                 backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
@@ -109,7 +117,7 @@ async function main(argv) {
                     {
                         ticks: {
                             callback: function (value) {
-                                return value + "%";
+                                return value + " min";
                             },
                         }
                     },

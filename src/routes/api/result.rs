@@ -41,7 +41,6 @@ pub fn get(lat: f64, lng: f64) -> JsonValue {
     };
 
     let mut clear_count = 0;
-    let mut chart = vec![];
 
     let sunrise = if let Value::Number(num) = &today["sys"]["sunrise"] {
         num.as_f64().unwrap()
@@ -55,7 +54,7 @@ pub fn get(lat: f64, lng: f64) -> JsonValue {
         0.0
     };
 
-    chart.push(sunset - sunrise);
+    let chart = [sunrise, sunset];
 
     for (i, data) in data.iter().enumerate() {
         if i <= 7 {
