@@ -62,6 +62,22 @@ async function main(argv) {
     calc_next.addEventListener("click", () => {
         if (area != undefined) window.location = `/result?area=${area}&lat=${argv.get("lat")}&lng=${argv.get("lng")}`;
     });
+
+    let explain = new Tour({
+        backdrop: true, storage: false, steps: [
+            {
+                element: ".mapbox-gl-draw_polygon",
+                title: "Draw around your roof area",
+                content: "Click on the draw button to start drawing",
+                placement: "left"
+            },
+        ]
+    });
+
+    explain.init();
+    explain.start();
+
+    // localStorage.clear();
 }
 
 main(new URLSearchParams(window.location.search));

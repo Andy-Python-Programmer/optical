@@ -22,6 +22,18 @@ pub fn get(lat: f64, lng: f64) -> JsonValue {
     .into_json::<Value>()
     .unwrap();
 
+    let today = ureq::get(
+        format!(
+            "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}",
+            lat, lng, *OPEN_WEATHER_MAP_KEY
+        )
+        .as_str(),
+    )
+    .call()
+    .unwrap()
+    .into_json::<Value>()
+    .unwrap();
+
     let data = if let Value::Array(array) = &weather["list"] {
         array
     } else {
@@ -31,57 +43,33 @@ pub fn get(lat: f64, lng: f64) -> JsonValue {
     let mut clear_count = 0;
     let mut chart = vec![];
 
+    let sunrise = if let Value::Number(num) = &today["sys"]["sunrise"] {
+        num.as_f64().unwrap()
+    } else {
+        0.0
+    };
+
+    let sunset = if let Value::Number(num) = &today["sys"]["sunset"] {
+        num.as_f64().unwrap()
+    } else {
+        0.0
+    };
+
+    chart.push(sunset - sunrise);
+
     for (i, data) in data.iter().enumerate() {
-        let temp = if let Value::Number(num) = &data["main"]["temp_max"] {
-            num.as_f64().unwrap()
-        } else {
-            0.0
-        } - 273.15;
-
-        let forecast = if let Value::String(str) = &data["weather"][0]["main"] {
-            str.as_str()
-        } else {
-            panic!("Expected forecast found: {:?}", &data["weather"][0]["main"]);
-        };
-
-        let description = if let Value::String(str) = &data["weather"][0]["description"] {
-            str.as_str()
-        } else {
-            ""
-        };
-
         if i <= 7 {
-            // Big brain maths 🧠
-            if forecast == "Clear" {
-                if temp >= 35.0 {
-                    chart.push(100);
-                } else {
-                    chart.push(90);
-                }
-            } else if description == "broken clouds"
-                || description == "scattered clouds"
-                || description == "few clouds"
-            {
-                if temp >= 35.0 {
-                    chart.push(95);
-                } else {
-                    chart.push(80);
-                }
-            } else if description == "light rain" {
-                if temp <= 32.0 {
-                    chart.push(60);
-                } else {
-                    chart.push(50);
-                }
+            let forecast = if let Value::String(str) = &data["weather"][0]["main"] {
+                str.as_str()
             } else {
-                if temp <= 25.0 {
-                    chart.push(40);
-                } else {
-                    chart.push(5);
-                }
-            }
+                panic!("Expected forecast found: {:?}", &data["weather"][0]["main"]);
+            };
 
-            println!("{}", temp);
+            let description = if let Value::String(str) = &data["weather"][0]["description"] {
+                str.as_str()
+            } else {
+                ""
+            };
 
             if forecast == "Clear"
                 || description == "broken clouds"
