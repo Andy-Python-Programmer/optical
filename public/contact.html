@@ -9,33 +9,86 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/static/stylesheets/common.css">
 
     <title>Optical - Contact</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white p-3">
+    <style>
+        .navbar {
+            background-image: url("/static/images/home-section-1.jpg");
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand">
                 <h3><a href="/" style="color: white; text-decoration: none;">Optical</a></h3>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse"
+                data-bs-target="#navbar-content">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse">
-                <ul class="nav">
-                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/dashboard">Dashboard</a></li>
+
+            <div class="collapse navbar-collapse" id="navbar-content">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="/" style="color: white;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/dashboard/"
+                            style="color: white;">Dashboard</a></li>
                 </ul>
             </div>
-            <a href="https://github.com/Andy-Python-Programmer/optical"
-                class="navbar-btn btn btn-sm btn-primary lift ml-auto">
-                <i class="bi bi-github"></i>
-                Github
-            </a>
         </div>
     </nav>
+
+    <section class="p-4">
+        <center>
+            <div class="card" style="width: 20rem;">
+                <img class="card-img-top"
+                    src="https://avatars.githubusercontent.com/u/62820092?s=460&u=d912ee0f01c178383fbf9aa9830217269b41bca8&v=4"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Anhad Singh</h5>
+                    <p class="card-text">Hello I am Anhad Singh. I am a 13 year old programmer. My main abilities are to
+                        code, create games, programming langauges and operating systems! Check out my <a
+                            href="https://github.com/Andy-Python-Programmer">github profile</a> for more information.
+                    </p>
+
+                    Discord: <a href="" class="card-link">Andy-Python-Programmer#4223</a>
+                </div>
+            </div>
+        </center>
+    </section>
+
+    <!-- The footer: -->
+    <footer class=" footer-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="https://twtcodejam.net/timathon/">Timathon</a></li>
+                        <li><a href="https://twtcodejam.net/timathon/team/692/">Team</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>Optical</h3>
+                    <blockquote>When energy is comming from the sun then why are we digging the Earth!
+                    </blockquote>
+                </div>
+                <div class="col item social">
+                    <a href="#"><i class="fa fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/Andy-Python-Programmer/optical"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <p class="copyright">© Anhad Singh 2021</p>
+        </div>
+    </footer>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>

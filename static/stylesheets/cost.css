@@ -39,3 +39,8 @@ p {
     margin: 0;
     font-size: 13px;
 }
+
+.btn {
+    border: none !important;
+    outline: none !important;
+}
