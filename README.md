@@ -18,6 +18,7 @@ So what are you wating for? [Start saving!](https://optical-twt.herokuapp.com/)
     * Amount of sunlight on your roof top 🏠
     * Amount of solar panels you can fit on your roof 🔢
     * Amount of energy you can generate using the solar panels ⛈ 
+    * Trusted solar panel world wide retailers 🛒
 - Easy to tweak your results by customising the amount of
     * Power you need 🔌
 
