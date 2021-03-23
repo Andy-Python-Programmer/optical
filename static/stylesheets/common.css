@@ -72,3 +72,8 @@
       transform: translate3d(0, 100%, 0);
     }
   }
+
+  .navbar-nav > li{
+    padding-left:10px;
+    padding-right:10px;
+  }
