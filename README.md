@@ -1,4 +1,5 @@
-<img src="misc/banner.png" width="500px">
+<img src="misc/logo.png" width="500px">
+
 
 # Optical
 [![Generic badge](https://img.shields.io/badge/CodeJam-Timathon-orange.svg)](https://twtcodejam.net/) 
