@@ -47,6 +47,8 @@ function main() {
     get_started.addEventListener("click", () => {
         if (center != undefined) window.location = `/main?lat=${center[0]}&lng=${center[1]}`
     });
+
+    document.querySelector('.mapboxgl-ctrl-geocoder--input').placeholder = "Search for your house";
 }
 
 main();

@@ -91,6 +91,8 @@ async function main() {
         earth.width([event.target.innerWidth]);
         earth.height([event.target.innerHeight]);
     });
+
+    document.querySelector('.mapboxgl-ctrl-geocoder--input').placeholder = "Search for your house";
 }
 
 main();

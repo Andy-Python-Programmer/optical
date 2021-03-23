@@ -13,6 +13,9 @@ async function main(argv) {
     const lng = argv.get("lng");
     const area = argv.get("area");
 
+    let top_button = document.getElementById("top-button");
+
+
     let res_api = await fetch(`/api/result/${lng}/${lat}`);
     let res_json = await res_api.json();
 
@@ -94,6 +97,7 @@ async function main(argv) {
 
         power_w = watts;
         render(panel_count);
+        scroll_to_the_top();
     });
 
     let sun_chart = document.getElementById("chart-sun");

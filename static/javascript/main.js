@@ -77,6 +77,12 @@ async function main(argv) {
     explain.init();
     explain.start();
 
+    let home = document.querySelector(".home");
+
+    home.addEventListener("click", () => {
+        window.location = "/";
+    });
+
     // localStorage.clear();
 }
 
