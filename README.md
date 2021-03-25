@@ -8,7 +8,7 @@
 ![](https://img.shields.io/badge/-CSS-blue)
 ![](https://img.shields.io/badge/-%F0%9F%A6%80%20Borrow%20Checker-red)
 
-When energy is coming from the sun then why are we digging the Earth! *Optical* is the new preferred solar panel calculator that will help you to find the right solar panel for your house easily and help maximise your savings!
+When energy is coming from the sun then why are we digging the Earth! *Optical* is the new preferred solar panel calculator that will help you to find the right solar panel for your house easily and help maximize your savings!
 
 So what are you wating for? [Start saving!](https://optical-twt.herokuapp.com/)
 
